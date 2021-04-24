@@ -1,9 +1,11 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react';
 
-export default function useLocalStorage() {
-    return (
-        <div>
-            
-        </div>
-    )
+
+const PREFIX = 'whattie';
+
+export default function useLocalStorage(key, initialValue) {
+        const prefixedKey = PREFIX + key;
+        const [value, setValue] = useState(() => {
+            const jsonValue = localStorage.getItem(prefixedKey);
+        })
 }
