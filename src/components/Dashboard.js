@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Sidebar from './Sidebar';
 
-export default function Dashboard() {
+export default function Dashboard({id}) {
     return (
         <div>
-            
+            <Sidebar id={id}/>
         </div>
     )
 }
