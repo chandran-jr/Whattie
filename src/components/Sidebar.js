@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {Tab, Nav} from 'react-bootstrap';
+import Conversations from './Conversations';
+import Contacts from './Contacts';
 
 export default function Sidebar({id}) {
 
@@ -18,6 +20,10 @@ export default function Sidebar({id}) {
                         <Nav.Link eventKey={CONTACTS_KEY}>Contacts</Nav.Link>
                     </Nav.Item>
                 </Nav>
+            <Tab.Content className="border-right overflow-auto flex-grow-1">
+                <Tab.Pane eventKey={CONVERSATIONS_KEY}><Conversations/></Tab.Pane>
+                <Tab.Pane eventKey={CONTACTS_KEY}><Contacts/></Tab.Pane>
+            </Tab.Content>
            </Tab.Container> 
         </div>
     )
