@@ -7,7 +7,7 @@ export default function Login() {
 
     return (
         <div>
-            <Container>
+            <Container className="align-items-center d-flex" style={{height:'100vh' }}>
                <Form>
                    <Form.Group>
                        <Form.Label>Enter your ID</Form.Label>
