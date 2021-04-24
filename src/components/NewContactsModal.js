@@ -2,12 +2,12 @@ import React from 'react'
 import { Modal } from 'react-bootstrap'
 
 
-export default function NewContactsModal() {
+export default function NewContactsModal({closeModal}) {
     return (
         <div>
-            <Modal>
-                
-            </Modal>
+            <Modal.Header>
+                Create a contact
+            </Modal.Header>
         </div>
     )
 }
