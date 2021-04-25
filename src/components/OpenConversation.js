@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Button, Form, InputGroup} from 'react-bootstrap';
-import {useConversations} from '../contexts/ConversationsProvider';
+import { useConversations } from '../contexts/ConversationsProvider';
 
 
 export default function OpenConversation() {
@@ -12,7 +12,8 @@ export default function OpenConversation() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        sendMessage(selectedConversation);
+        sendMessage(selectedConversation.recipients.map(r => r.id),text);
+            setText("");
     }
 
 

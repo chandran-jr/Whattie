@@ -8,7 +8,7 @@ export function useConversations() {
     return useContext(ConversationsContext);
 }
 
-export function ConversationsProvider({children}) {
+export function ConversationsProvider({id, children}) {
 
     const [conversations,setConversations] = useLocalStorage('conversations', []);
 
@@ -20,6 +20,14 @@ export function ConversationsProvider({children}) {
         setConversations(prevConversations => {
             return [...prevConversations, {recipients, message: []}]
         })
+    }
+
+    function addMessageToConversation({recipients, text, sender}) {
+
+    }
+
+    function sendMessage({recipients, text}) {
+        addMessageToConversation({recipients,text, sender: id})
     }
 
     const formattedConversations = conversations.map((conversation, index) => {
@@ -37,6 +45,7 @@ export function ConversationsProvider({children}) {
     const value = {
         conversations: formattedConversations,
         selectedConversation: formattedConversations[selectedConversationIndex],
+        sendMessage,
         selectConversationIndex: setSelectedConversationIndex,
         createConversation
     }
