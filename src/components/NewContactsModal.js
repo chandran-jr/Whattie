@@ -21,8 +21,8 @@ export default function NewContactsModal({closeModal}) {
             <Modal.Header closeButton>
                 Create a contact
             </Modal.Header>
-            <Modal.Body onSubmit={handleSubmit}>
-                <Form>
+            <Modal.Body>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group>
                         <Form.Label>ID</Form.Label>
                         <Form.Control type="text" ref={idRef} required/>
