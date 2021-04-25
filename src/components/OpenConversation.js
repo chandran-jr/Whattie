@@ -15,13 +15,14 @@ export default function OpenConversation() {
         </div>
             <Form>
 
-                <Form.Group>
+                <Form.Group className="m-2">
                     <InputGroup>
                         <Form.Control 
                         as="textarea" 
                         required 
                         onChange={e => setText(e.target.value)}
                         value={text}
+                        style={{height: "75px" , resize: "none"}}
 
                         />
 
