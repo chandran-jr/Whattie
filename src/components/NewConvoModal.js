@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import {useContacts} from '../contexts/ContactsProvider';
+import {useConversations} from '../contexts/ConversationsProvider';
 
-export default function NewConvoModal() {
+export default function NewConvoModal({closeModal}) {
 
     const [selectedContactIds, setSelectedContactIds] = useState([]);
     const {contacts} = useContacts();
+    const { createConversation } = useConversations();
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        createConversation(selectedContactIds);
+
+        closeModal();
     }
 
     function handleCheckboxChange(contactId) {
