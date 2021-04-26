@@ -23,7 +23,17 @@ export function ConversationsProvider({id, children}) {
     }
 
     function addMessageToConversation({recipients, text, sender}) {
+            setConversations(prevConversations => {
+                let madeChange = false;
+                const newMessage = {sender, text}
 
+                if(madeChange) {
+
+                }
+                else{
+                    return [...prevConversations, {recipients, message: [newMessage]}]
+                }
+            })
     }
 
     function sendMessage({recipients, text}) {
