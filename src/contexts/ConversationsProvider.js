@@ -26,12 +26,21 @@ export function ConversationsProvider({id, children}) {
             setConversations(prevConversations => {
                 let madeChange = false;
                 const newMessage = {sender, text}
+                const newConversations = prevConversations.map(conversation => {
+                        if (arrayEquality(conversation.recipients, recipients)){
+                            madeChange = true;
+                            return {...conversation, message: [...conversation.messages, newMessage]}
+                        }
+
+                        return conversation
+                })
 
                 if(madeChange) {
-
+                    return newConversations
                 }
                 else{
-                    return [...prevConversations, {recipients, message: [newMessage]}]
+                    return [...prevConversations,
+                         {recipients, message: [newMessage]}]
                 }
             })
     }
@@ -48,6 +57,9 @@ export function ConversationsProvider({id, children}) {
             const name = (contact && contact.name) || recipient
             return {id: recipient, name}
         })
+
+        
+
         const selected = index === selectedConversationIndex
         return {...conversation, recipients, selected}
     })
@@ -65,4 +77,16 @@ export function ConversationsProvider({id, children}) {
             {children}
         </ConversationsContext.Provider>
     )
+}
+
+function arrayEquality(a,b) {
+    if(a.length !== b.length) {
+        return false
+    }
+    a.sort()
+    b.sort()
+
+    return a.every((element, index) => {
+        return element === b[index]
+    })
 }
