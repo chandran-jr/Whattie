@@ -27,6 +27,7 @@ export default function OpenConversation() {
                     return (
                         <div key={index} className="my-1 d-flex flex-column">
                         <div>{message.text}</div>
+                        <div>{message.fromMe ? "You" : message.senderName} </div>
                         </div>
 
 
